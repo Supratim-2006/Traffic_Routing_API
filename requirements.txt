@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+osmnx
+networkx
+gdown
