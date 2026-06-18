@@ -3,3 +3,6 @@ uvicorn
 osmnx
 networkx
 gdown
+rtree
+shapely
+scikit-learn
