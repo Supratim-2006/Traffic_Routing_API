@@ -1,12 +1,11 @@
 ---
-title: Traffic Routing Api
-emoji: 📉
-colorFrom: pink
-colorTo: green
+title: Traffic Routing API
+emoji: 🚦
+colorFrom: red
+colorTo: blue
 sdk: docker
 pinned: false
-license: mit
-short_description: Routes different routes in traffic.
 ---
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+# Traffic Routing API
+FastAPI backend for traffic diversion routing.
