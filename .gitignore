@@ -16,6 +16,7 @@ cache/
 # Frontend (not needed for API)
 index.html
 
+
 # Environment variables
 .env
 

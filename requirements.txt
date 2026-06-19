@@ -2,7 +2,11 @@ fastapi
 uvicorn
 osmnx
 networkx
+pandas
+numpy
+scipy
 gdown
+httpx
 rtree
 shapely
 scikit-learn
