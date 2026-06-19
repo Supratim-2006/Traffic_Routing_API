@@ -54,8 +54,7 @@ if not os.path.exists(GRAPHML_PATH):
     gdown.download(
         "https://drive.google.com/file/d/1AvJsuHvHXgbaQQ-1JvZMHttZjrbSO0Bj/view?usp=sharing",
         GRAPHML_PATH,
-        quiet=False,
-        fuzzy=True,
+        quiet=False
     )
 
 # ── 2. Load raw OSMnx graph ───────────────────────────────────────────────────
