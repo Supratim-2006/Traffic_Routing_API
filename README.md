@@ -1,5 +1,8 @@
 # CrowdFlow AI — Traffic Diversion API
 
+
+The API is live at https://supratimkukri-traffic-routing-api.hf.space/
+
 Event-aware traffic routing for Bengaluru. A street-network graph (OSMnx/OpenStreetMap) is enriched with live incident data so routes can be ranked and re-routed around accidents, road closures, and other disruptions instead of relying on free-flow distance alone.
 
 ## How it works
