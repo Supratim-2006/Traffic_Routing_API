@@ -295,6 +295,11 @@ def _path_stats(path: list, graph: nx.DiGraph) -> tuple[float, float, int]:
     return round(total_len, 2), round(total_tt, 2), closures
 
 
+def _is_valid_main_road_path(path: list) -> bool:
+    """Ignore snap points that already sit on a main-road node (zero-length routes)."""
+    return len(path) >= 2
+
+
 # ── Endpoint 1: Nearest main road (top 3) ────────────────────────────────────
 def route_to_nearest_main_road(graph: nx.DiGraph,
                                 current_lat: float,
@@ -324,10 +329,13 @@ def route_to_nearest_main_road(graph: nx.DiGraph,
         for node, tt in sorted(distances.items(), key=lambda x: x[1]):
             if node not in main_node_map:
                 continue
+            path = paths[node]
+            if not _is_valid_main_road_path(path):
+                continue
             road_name = main_node_map[node]
             if road_name in seen_roads:
                 continue
-            seen_roads[road_name] = {"travel_time": tt, "path": paths[node]}
+            seen_roads[road_name] = {"travel_time": tt, "path": path}
             if len(seen_roads) == 3:
                 break
 
@@ -402,9 +410,13 @@ def get_immediate_local_bypass(graph: nx.DiGraph,
 
         best = None
         for node, tt in sorted(distances.items(), key=lambda x: x[1]):
-            if node in main_node_map:
-                best = (node, tt, paths[node])
-                break
+            if node not in main_node_map:
+                continue
+            path = paths[node]
+            if not _is_valid_main_road_path(path):
+                continue
+            best = (node, tt, path)
+            break
 
         if not best:
             return {"error": "No main road reachable within 10 minutes after blocking accident road."}
